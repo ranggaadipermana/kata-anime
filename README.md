@@ -19,6 +19,20 @@ Proyek ini dibangun sebagai sumber data (*single source of truth*) yang siap dik
 - 🤖 **Bot Sosial & Chatbot** (Discord, Telegram, WhatsApp bot)
 - 🌐 **Web Widget / Generator Kutipan Harian** (Daily Anime Quote)
 
+### 🚀 Peningkatan dari Dataset Asli (Upgrade Highlights)
+Dataset ini berakar dan dikembangkan dari dataset awal [quotesnime-database](https://github.com/cabrata/quotesnime-database) oleh [@cabrata](https://github.com/cabrata). Pada versi pemutakhiran ini, telah dilakukan **pembersihan kualitas data, standardisasi bahasa, serta ekspansi multibahasa besar-besaran**, antara lain:
+
+1. ✍️ **Koreksi Tipografi & Bahasa Baku**:
+   - Memperbaiki puluhan salah ketik (*typo*) seperti *bagitu* $\rightarrow$ *begitu*, *manggampangkan* $\rightarrow$ *menggampangkan*, *payang* $\rightarrow$ *payah*, *tertapi* $\rightarrow$ *tetapi*, *suksus* $\rightarrow$ *sukses*, dll.
+   - Penyesuaian ke bentuk baku KBBI (misal: *merubah/rubahlah* $\rightarrow$ *mengubah/ubahlah*, *nasehat* $\rightarrow$ *nasihat*, *menggerakan* $\rightarrow$ *menggerakkan*, *berfikir* $\rightarrow$ *berpikir*).
+   - Memperbaiki kalimat yang menempel tanpa spasi setelah tanda baca titik (`.`), tanda tanya (`?`), dan kurung siku (`]`).
+2. 🌏 **Ekspansi Multibahasa (5 Bahasa Dunia)**:
+   - Dari dataset asal yang hanya tersedia dalam 1 bahasa (Indonesia), kini diperluas secara lengkap ke dalam 5 bahasa: **Indonesia (ID)**, **Inggris (EN)**, **Jepang (JA)**, **Filipina (TL)**, dan **Malaysia (MS)** dengan total **9.605 kutipan**.
+3. 🏷️ **Penyelarasan Kategori Tematik**:
+   - Lebih dari 1.300+ kategori topik diterjemahkan secara rapi dan selaras ke masing-masing bahasa target tanpa merusak struktur array.
+4. 📁 **Arsitektur Direktori Modern & Production-Ready**:
+   - Penataan subfolder terstandarisasi per kode bahasa (`data/id/`, `data/en/`, `data/ja/`, dll.) yang rapi untuk repositori GitHub dan siap di-fetch secara instan via jsDelivr CDN.
+
 ### ✨ Keunggulan Dataset
 1. **Skema Data Seragam**: Struktur kunci JSON (`character`, `quotes`, `anime`, `episode`, `category`) 100% konsisten di semua bahasa, memudahkan *switching language* secara dinamis di sisi klien.
 2. **Relasi Entitas Konsisten**: Nama karakter dan judul anime tetap menggunakan penamaan baku Romaji di seluruh versi bahasa agar memudahkan relasi data, pencarian (*filtering*), dan *indexing*.
@@ -136,6 +150,11 @@ app.listen(3000, () => console.log('API running on http://localhost:3000'));
   - 🇯🇵 **JA** (`kata-anime-japanese.json`)
   - 🇵🇭 **TL** (`kata-anime-filipino.json`)
   - 🇲🇾 **MS** (`kata-anime-malaysian.json`)
+
+---
+
+## 🙏 Kredit & Penghargaan (Credits & Acknowledgments)
+- Terima kasih dan apresiasi sebesar-besarnya kepada [@cabrata](https://github.com/cabrata) atas inisiatif awal pengumpulan data pada repositori [quotesnime-database](https://github.com/cabrata/quotesnime-database).
 
 ---
 
