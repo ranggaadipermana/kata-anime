@@ -1,0 +1,7 @@
+# Translation Cache
+.cache_trans/
+*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
