@@ -1,31 +1,57 @@
 # 🎌 Kata Anime Multilingual Dataset (Public API Ready)
 
-Dataset kutipan anime multibahasa yang siap digunakan untuk keperluan REST API publik, aplikasi mobile, web, dan bot Discord/Telegram.
+<p align="center">
+  <img src="https://img.shields.io/badge/Total%20Quotes-9%2C605-ff69b4?style=for-the-badge&logo=quote" alt="Total Quotes" />
+  <img src="https://img.shields.io/badge/Languages-5%20Supported-4169e1?style=for-the-badge&logo=google-translate" alt="Languages" />
+  <img src="https://img.shields.io/badge/Format-JSON-brightgreen?style=for-the-badge&logo=json" alt="Format" />
+  <img src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge" alt="License" />
+</p>
+
+---
+
+## 📖 Tentang Proyek (About)
+
+**Kata Anime Multilingual Dataset** adalah basis data terbuka (*open dataset*) yang menghimpun ribuan kutipan bijak, inspiratif, emosional, dan bermakna dari berbagai judul anime populer ke dalam 5 bahasa: **Bahasa Indonesia**, **Bahasa Inggris**, **Bahasa Jepang**, **Bahasa Filipina (Tagalog)**, dan **Bahasa Malaysia (Melayu)**.
+
+Proyek ini dibangun sebagai sumber data (*single source of truth*) yang siap dikonsumsi langsung untuk pengembangan:
+- 🚀 **REST API Publik** (Node.js, Python FastAPI/Flask, Go, PHP, dsb.)
+- 📱 **Aplikasi Mobile** (Flutter, React Native, Swift, Kotlin)
+- 🤖 **Bot Sosial & Chatbot** (Discord, Telegram, WhatsApp bot)
+- 🌐 **Web Widget / Generator Kutipan Harian** (Daily Anime Quote)
+
+### ✨ Keunggulan Dataset
+1. **Skema Data Seragam**: Struktur kunci JSON (`character`, `quotes`, `anime`, `episode`, `category`) 100% konsisten di semua bahasa, memudahkan *switching language* secara dinamis di sisi klien.
+2. **Relasi Entitas Konsisten**: Nama karakter dan judul anime tetap menggunakan penamaan baku Romaji di seluruh versi bahasa agar memudahkan relasi data, pencarian (*filtering*), dan *indexing*.
+3. **Kategori Tematik Terstruktur**: Dilengkapi dengan lebih dari 1.300+ kategori topik (kehidupan, cinta, persahabatan, motivasi, dll.) yang diterjemahkan sesuai bahasa masing-masing.
+4. **Siap CDN (Tanpa Server Tambahan)**: Berkas data dapat diakses langsung menggunakan CDN gratis seperti jsDelivr dengan waktu *load* sangat cepat.
+
+---
 
 ## 📂 Struktur Direktori
 
 ```text
 .
-├── kata-anime-indonesia.json          # File utama Bahasa Indonesia (legacy/root)
+├── kata-anime-indonesia.json          # File utama Bahasa Indonesia (root)
 ├── data/
 │   ├── id/
 │   │   └── kata-anime-indonesia.json   # 🇮🇩 Bahasa Indonesia (1.921 kutipan)
 │   ├── en/
 │   │   └── kata-anime-english.json     # 🇬🇧 English (1.921 kutipan)
 │   ├── ja/
-│   │   └── kata-anime-japanese.json    # 🇯🇵 Japanese (1.921 kutipan)
+│   │   └── kata-anime-japanese.json    # 🇯🇵 Japanese / 日本語 (1.921 kutipan)
 │   ├── tl/
 │   │   └── kata-anime-filipino.json    # 🇵🇭 Filipino / Tagalog (1.921 kutipan)
 │   └── ms/
 │       └── kata-anime-malaysian.json   # 🇲🇾 Bahasa Melayu (1.921 kutipan)
-└── README.md
+├── .gitignore                         # Pengaturan ignore berkas non-dataset
+└── README.md                          # Dokumentasi proyek
 ```
 
 ---
 
-## 📋 Skema JSON Data
+## 📋 Skema Data JSON
 
-Setiap data objek memiliki skema yang seragam dan konsisten di seluruh bahasa:
+Setiap item kutipan memiliki format objek berikut:
 
 ```json
 {
@@ -41,32 +67,38 @@ Setiap data objek memiliki skema yang seragam dan konsisten di seluruh bahasa:
 ```
 
 ### Penjelasan Bidang (Field):
-| Field | Tipe | Deskripsi |
+| Field | Tipe Data | Deskripsi |
 | :--- | :--- | :--- |
-| `character` | `string` | Nama karakter dalam ejaan Romaji baku (konsisten antar bahasa untuk query relasional). |
-| `quotes` | `string` | Teks kutipan yang telah disesuaikan dan diterjemahkan ke bahasa target. |
-| `anime` | `string` | Judul anime dalam ejaan resmi/Romaji (konsisten antar bahasa). |
-| `episode` | `number \| null` | Nomor episode tempat kutipan muncul. |
-| `category` | `string[]` | Kategori tema kutipan yang diterjemahkan ke bahasa target. |
+| `character` | `string` | Nama karakter penutur (menggunakan ejaan baku Romaji agar seragam antar bahasa). |
+| `quotes` | `string` | Teks kutipan yang telah diterjemahkan dan disesuaikan dengan bahasa target. |
+| `anime` | `string` | Judul seri anime asal kutipan (menggunakan ejaan resmi / Romaji). |
+| `episode` | `number \| null` | Nomor episode kemunculan kutipan. |
+| `category` | `string[]` | Label kategori tema yang diterjemahkan sesuai bahasa target. |
 
 ---
 
 ## 🌐 Contoh Penggunaan di Aplikasi / API Publik
 
 ### 1. Akses Langsung Melalui CDN GitHub (jsDelivr / Raw)
+Anda dapat langsung memanggil dataset tanpa perlu setup server backend:
+
 ```javascript
-// Contoh fetch dataset Bahasa Inggris via CDN
+// Contoh fetch dataset Bahasa Inggris via jsDelivr CDN
 const url = 'https://cdn.jsdelivr.net/gh/ranggaadipermana/kata-anime@main/data/en/kata-anime-english.json';
 
 async function getRandomQuote() {
   const response = await fetch(url);
   const data = await response.json();
   const random = data[Math.floor(Math.random() * data.length)];
-  console.log(`"${random.quotes}" - ${random.character} (${random.anime})`);
+  console.log(`"${random.quotes}" — ${random.character} (${random.anime})`);
 }
+
+getRandomQuote();
 ```
 
-### 2. Node.js / Express API Endpoint
+### 2. Node.js / Express API Server
+Implementasi endpoint API sederhana dengan parameter bahasa:
+
 ```javascript
 const express = require('express');
 const app = express();
@@ -79,18 +111,33 @@ const datasets = {
   ms: require('./data/ms/kata-anime-malaysian.json')
 };
 
-// Endpoint: /api/quotes?lang=en&category=Inspiration
+// Endpoint: GET /api/quotes/random?lang=ja
 app.get('/api/quotes/random', (req, res) => {
   const lang = req.query.lang || 'id';
   const data = datasets[lang] || datasets['id'];
   const randomQuote = data[Math.floor(Math.random() * data.length)];
-  res.json(randomQuote);
+  res.json({
+    success: true,
+    data: randomQuote
+  });
 });
+
+app.listen(3000, () => console.log('API running on http://localhost:3000'));
 ```
 
 ---
 
-## 📊 Statistik Dataset
-- **Total Kutipan**: 1.921 per bahasa (Total: 9.605 kutipan lintas bahasa)
-- **Kategori Unik**: ~1.309 kategori
-- **Bahasa yang Didukung**: 5 Bahasa (Indonesia, English, Japanese, Filipino, Malaysian)
+## 📊 Ringkasan Statistik
+- **Total Kutipan**: 1.921 entri unik per bahasa (**Total: 9.605 kutipan**)
+- **Jumlah Kategori**: ~1.309 kategori unik per bahasa
+- **Dukungan Bahasa**:
+  - 🇮🇩 **ID** (`kata-anime-indonesia.json`)
+  - 🇬🇧 **EN** (`kata-anime-english.json`)
+  - 🇯🇵 **JA** (`kata-anime-japanese.json`)
+  - 🇵🇭 **TL** (`kata-anime-filipino.json`)
+  - 🇲🇾 **MS** (`kata-anime-malaysian.json`)
+
+---
+
+## 🤝 Kontribusi & Lisensi
+Kontribusi saran perbaikan salah ketik atau penambahan kutipan sangat diterima melalui *Pull Request* atau *Issues* di GitHub. Dataset ini bebas digunakan untuk proyek non-komersial maupun komersial dengan tetap mencantumkan atribusi repositori ini.
