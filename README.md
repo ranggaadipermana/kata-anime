@@ -141,3 +141,27 @@ app.listen(3000, () => console.log('API running on http://localhost:3000'));
 
 ## 🤝 Kontribusi & Lisensi
 Kontribusi saran perbaikan salah ketik atau penambahan kutipan sangat diterima melalui *Pull Request* atau *Issues* di GitHub. Dataset ini bebas digunakan untuk proyek non-komersial maupun komersial dengan tetap mencantumkan atribusi repositori ini.
+
+---
+
+## ⚖️ Penyangkalan Hak Cipta (Disclaimer)
+
+> [!IMPORTANT]
+> **Pemberitahuan Hak Cipta & Kekayaan Intelektual:**
+>
+> Seluruh judul anime, nama karakter, dialog/kutipan asli, serta materi terkait yang terdapat di dalam repositori ini merupakan **hak cipta dan kekayaan intelektual sepenuhnya milik masing-masing pencipta, pengarang (*mangaka* / penulis *light novel*), studio animasi, penerbit, dan komite produksi anime yang bersangkutan**.
+>
+> Repositori dan dataset ini disusun semata-mata untuk **tujuan edukasi, dokumentasi, apresiasi seni budaya, dan pengembangan riset teknologi/perangkat lunak (*fair use*)**. Proyek ini bersifat independen dan tidak terafiliasi, disponsori, atau didukung secara resmi oleh pemegang hak cipta mana pun.
+>
+> Jika Anda adalah pemegang hak cipta sah dan berkeberatan atas pencantuman konten tertentu di dalam repositori ini, silakan ajukan permohonan peninjauan atau penghapusan melalui [GitHub Issues](https://github.com/ranggaadipermana/kata-anime/issues).
+
+<details>
+<summary><b>English Version (Copyright Disclaimer)</b></summary>
+
+> All anime titles, character names, original dialogue/quotes, and associated materials in this repository are the **copyrighted property and intellectual property of their respective creators, authors, animation studios, publishers, and production committees**.
+>
+> This dataset is compiled strictly for **educational, archival, community appreciation, and non-commercial software development purposes under fair use principles**. This project is completely independent and is not affiliated with, endorsed by, or sponsored by any official copyright owners.
+>
+> If you are a verified copyright owner and wish to request the review or removal of any specific content, please submit a request via [GitHub Issues](https://github.com/ranggaadipermana/kata-anime/issues).
+
+</details>
